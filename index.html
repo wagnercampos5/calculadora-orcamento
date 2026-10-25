@@ -12,6 +12,88 @@
             <h1>Calculadora de Climatização &amp; Instalação</h1>
             <p>Calcule a potência ideal em BTUs para o seu ambiente e faça uma estimativa imediata dos custos de instalação e materiais.</p>
         </header>
+        <form id="form-orcamento" class="form-orcamento">
+            <fieldset class="grupo-campos">
+                <legend>1. Dados do Ambiente (carga térmica)</legend>
+                <div class="campo">
+                    <label for="area">Área do ambiente (m²)</label>
+                    <input type="number" id="area" name="area" min="1" max="200" placeholder="Ex: 18" required>
+                </div>
+                <div class="campo">
+                    <label for="sol">Incidência solar:</label>
+                    <select id="sol" name="sol">
+                        <option value="manha">Sol da manhã (menos calor)</option>
+                        <option value="tarde">Sol da tarde ou o dia todo (mais calor)</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="pessoas">Quantidade de pessoas frequentes:</label>
+                    <input type="number" id="pessoas" name="pessoas" min="1" max="50" value="1" required>
+                </div>
+            </fieldset>
+            <fieldset class="grupo-campos">
+                <legend>2. Serviços &amp; Detalhes da Instalação</legend>
+                <div class="campo">
+                    <label for="tipo-aparelho">Tipo de Tecnologia:</label>
+                    <select id="tipo-aparelho" nome="tipo-aparelho">
+                        <option value="inverter">Split Hi-Wall Inverter (Econômico)</option>
+                        <option value="convencional">Split Convencional (On/Off)</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="tubulacao">Metros de tubulação adicional (além do kit padrão de 3m):</label>
+                    <input type="number" id="tubulacao" name="tubulacao" min="0" max="30" value="0">
+                </div>
+                <div class="campo-opcionais">
+                    <p class="titulo-opcionais">Serviços adicionais necessários:</p>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="desinstalacao" name="desinstalacao" value="150">
+                        Desinstalação de ar-condicionado antigo (+ R$ 150)
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="suporte-parede" name="suporte-parede" value="80">
+                        Suporte reforçado para condensadora externa (+ R$ 80)
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="eletrica" name="eletrica" value="120">
+                        Ponto elétrico dedicado 220V com disjuntor (+ R$ 120)
+                    </label>
+                </div>
+            </fieldset>
+            <div class="acoes-form">
+                <button type="button" id="btn-calcular" class="btn-calcular">Calcular Orçamento</button>
+            </div>
+        </form>
+        <section id="resultado" class="resultado oculto" aria-live="polite">
+            <h2>Resumo do Orçamento</h2>
+
+            <div class="card-resultado destaque-btu">
+                <h3>Capacidade Recomendada:</h3>
+                <p class="valor-destaque"><span id="res-btus">--</span> BTUs</p>
+                <p class="info-aparelho" id="res-tipo-aparelho">Tecnologia sugerida: --</p>
+            </div>
+
+            <div class="card-resultado">
+                <h3>Detalhamento dos Valores:</h3>
+                <ul class="lista-custos">
+                    <li>Mão de obra de instalação: <strong id="res-mao-obra">R$ 0,00</strong></li>
+                    <li>Tubulação adicional de cobre: <strong id="res-tubulacao">R$ 0,00</strong></li>
+                    <li>Serviços adicionais: <strong id="res-adicionais">R$ 0,00</strong></li>
+                </ul>
+                <div class="divisor"></div>
+                <div class="total-container">
+                    <span>Valor Total Estimado:</span>
+                    <span class="preco-total" id="res-total">R$ 0,00</span>
+                </div>
+            </div>
+
+            <div class="acoes-resultado">
+                <a href="#" id="btn-whatsapp" target="_blank" class="btn-whatsapp">
+                    Enviar Orçamento no WhatsApp
+                </a>
+            </div>
+        </section>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
